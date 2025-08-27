@@ -1,4 +1,5 @@
 import os
+
 try:
     def get_files_info(working_directory, directory="."):
     
@@ -34,10 +35,10 @@ try:
 
         return build_str
 
-
-    get_files_info("calculator")
-
-
-
 except:
-    print("An unexpected error occurred!")
+    print('An unexpected error occurred in "get_files_info"!')
+
+
+
+
+
