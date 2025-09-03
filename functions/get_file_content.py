@@ -1,5 +1,6 @@
 import os
-from functions import config
+import config
+from google.genai import types
 
 
 def truncate_string(s, max_length):
@@ -42,3 +43,18 @@ def get_file_content(working_directory, file_path):
     except:
         
         print('Error: an unexpected error occurred in "get_file_content"!')
+
+schema_get_file_content = types.FunctionDeclaration(
+    name="get_file_content",
+    description=f"Reads and returns the first {config.character_limit} characters of the content from a specified file within the working directory.",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="The path to the file whose content should be read, relative to the working directory.",
+            ),
+        },
+        required=["file_path"],
+    ),
+)
